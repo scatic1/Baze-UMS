@@ -1,0 +1,7 @@
+{
+  "name": "fakultet",
+  "private": true,
+  "dependencies": {
+    "startbootstrap-business-casual": "^4.0.0-beta"
+  }
+}

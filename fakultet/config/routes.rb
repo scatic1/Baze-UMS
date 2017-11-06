@@ -1,0 +1,10 @@
+Rails.application.routes.draw do
+  get 'welcome/homepage'
+  root 'welcome#homepage'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  get "about" => "welcome#about", as: :about
+  get "blog" => "welcome#blog", as: :blog
+  get "contact" => "welcome#contact", as: :contact
+ 
+end

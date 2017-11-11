@@ -1,4 +1,5 @@
 class JobApplicationController < ApplicationController
+  
   def new
   end
 

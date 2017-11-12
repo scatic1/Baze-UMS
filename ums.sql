@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 12, 2017 at 12:13 PM
+-- Generation Time: Nov 12, 2017 at 08:09 PM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -65,6 +65,36 @@ INSERT INTO `job_advertisements` (`id`, `work_position`, `created_at`, `updated_
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `job_applications`
+--
+
+CREATE TABLE `job_applications` (
+  `id` bigint(20) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `surname` varchar(255) DEFAULT NULL,
+  `JBMG` int(11) DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `place_of_birth` varchar(255) DEFAULT NULL,
+  `telephone_number` int(11) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `gender` varchar(255) DEFAULT NULL,
+  `CV` text,
+  `motivation_letter` text,
+  `job_advertisements_id` bigint(20) DEFAULT NULL,
+  `created_at` datetime NOT NULL,
+  `updated_at` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `job_applications`
+--
+
+INSERT INTO `job_applications` (`id`, `name`, `surname`, `JBMG`, `date_of_birth`, `place_of_birth`, `telephone_number`, `email`, `gender`, `CV`, `motivation_letter`, `job_advertisements_id`, `created_at`, `updated_at`) VALUES
+(1, 'Amina', 'Mahmutovic', 12345, '1995-11-01', 'Konjic', 62161543, 'amina@gmail.com', 'zensko', 'Programer', NULL, 1, '2017-11-02 00:00:00', '2017-11-09 00:00:00');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `schema_migrations`
 --
 
@@ -80,7 +110,8 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 ('20171109150306'),
 ('20171109220934'),
 ('20171111123053'),
-('20171112111541');
+('20171112111541'),
+('20171112121553');
 
 -- --------------------------------------------------------
 
@@ -129,6 +160,13 @@ ALTER TABLE `job_advertisements`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `job_applications`
+--
+ALTER TABLE `job_applications`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `index_job_applications_on_job_advertisements_id` (`job_advertisements_id`);
+
+--
 -- Indexes for table `schema_migrations`
 --
 ALTER TABLE `schema_migrations`
@@ -148,12 +186,27 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `job_advertisements`
 --
 ALTER TABLE `job_advertisements`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `job_applications`
+--
+ALTER TABLE `job_applications`
+  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- Constraints for dumped tables
+--
+
+--
+-- Constraints for table `job_applications`
+--
+ALTER TABLE `job_applications`
+  ADD CONSTRAINT `fk_rails_50734fd3c1` FOREIGN KEY (`job_advertisements_id`) REFERENCES `job_advertisements` (`id`);
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

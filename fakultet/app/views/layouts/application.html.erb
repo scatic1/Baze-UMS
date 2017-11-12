@@ -20,13 +20,13 @@
     <!-- Custom styles for this template -->
     <link href="assets/business-casual.css" rel="stylesheet">
 
-   
+
   </head>
 
   <body>
   	 <div class="tagline-upper text-center text-heading text-shadow text-white mt-5 d-none d-lg-block">University Management System</div>
     <div class="tagline-lower text-center text-expanded text-shadow text-uppercase text-white mb-5 d-none d-lg-block">Elektrotehnički Fakultet | Zmaja od Bosne BB | 71 000 SARAJEVO</div>
- 
+
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-faded py-lg-4">
       <div class="container">
@@ -34,27 +34,32 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        
+
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
           <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" <%= link_to "Home", root_path%>
-                
+          <a class="nav-link text-uppercase text-expanded" <%= link_to "Home", root_path%>
+
               </a>
-            </li> 
+            </li>
             <% if !logged_in? %>
 
            <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" <%= link_to "Log in",login_path%></a>
             </li>
             <%else%>
-           
-          
+
+
            <%= auto_session_timeout_js %>
 
-            
+
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" <%= link_to "#{current_user.name}",about_path%></a>
+
+            </li>
+            <li class="nav-item px-lg-4">
+
+                <a class="nav-link text-uppercase text-expanded" <%= link_to "Create New Advertisement",job_advertisements_path%></a>
             </li>
            <!-- <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" <%= link_to "Blog",blog_path%></a>
@@ -66,17 +71,17 @@
              <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" <%= link_to "Log out",logout_path, method: :delete %></a>
             </li>
-            
-            
-            
+
+
+
             <%end%>
-           
+
 
           </ul>
         </div>
 
       </div>
-     
+
     </nav>
       <div class="bg-faded p-4 my-4">
        <% flash.each do |type, message| %>
@@ -84,7 +89,7 @@
     <% end %>
     <%= yield %>
   </div>
-  
+
     <footer class="bg-faded text-center py-5">
       <div class="container">
         <p class="m-0">Copyright &copy; University Management System 2017</p>

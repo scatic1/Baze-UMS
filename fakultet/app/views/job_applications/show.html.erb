@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @job_application.name %>
+</p>
+
+<p>
+  <strong>Surname:</strong>
+  <%= @job_application.surname %>
+</p>
+
+<p>
+  <strong>Jbmg:</strong>
+  <%= @job_application.JBMG %>
+</p>
+
+<p>
+  <strong>Date of birth:</strong>
+  <%= @job_application.date_of_birth %>
+</p>
+
+<p>
+  <strong>Place of birth:</strong>
+  <%= @job_application.place_of_birth %>
+</p>
+
+<p>
+  <strong>Telephone number:</strong>
+  <%= @job_application.telephone_number %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @job_application.email %>
+</p>
+
+<p>
+  <strong>Gender:</strong>
+  <%= @job_application.gender %>
+</p>
+
+<p>
+  <strong>Cv:</strong>
+  <%= @job_application.CV %>
+</p>
+
+<p>
+  <strong>Motivation letter:</strong>
+  <%= @job_application.motivation_letter %>
+</p>
+
+<p>
+  <strong>Job advertisements:</strong>
+  <%= @job_application.job_advertisements_id %>
+</p>
+
+<%= link_to 'Edit', edit_job_application_path(@job_application) %> |
+<%= link_to 'Back', job_applications_path %>

@@ -1,10 +1,12 @@
 Rails.application.routes.draw do
+  resources :job_applications
+  resources :job_advertisements
 match 'active'  => 'sessions#active',  via: :get
 match 'timeout' => 'sessions#timeout', via: :get
 get 'sessions/new'
 
   resources :users
-  
+
   get 'welcome/homepage'
   root 'welcome#homepage'
  # root 'job_application#new'
@@ -12,12 +14,11 @@ get 'sessions/new'
  get 'login', to:'sessions#new'
   get 'logout', to: 'sessions#destroy'
   post 'login', to: 'sessions#create'
- get "new" => "job_application#new", as: :new
 
-  get "edit" => "job_application#edit", as: :edit
-   get "delete" => "job_application#delete", as: :delete
   get "about" => "welcome#about", as: :about
   get "blog" => "welcome#blog", as: :blog
   get "contact" => "welcome#contact", as: :contact
- 
+  get "new_advertisement"=>"job_advertisements#new", as: :new_advertisement
+  get "new_application"=>"job_applications#new", as: :new_application
+
 end

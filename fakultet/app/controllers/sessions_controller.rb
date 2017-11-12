@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
   def active
    render_session_status
   end
-  
+
   def timeout
     render_session_timeout
   end
@@ -25,10 +25,10 @@ class SessionsController < ApplicationController
   	end
   end
 
-def destroy	
+def destroy
 	flash[:success] = "Good bye #{current_user.name}!"
   	session[:user_id] = nil
-  
+
   	redirect_to root_path
   end
 end

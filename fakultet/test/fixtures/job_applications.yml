@@ -1,25 +1,27 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  ime: MyString
-  prezime: MyString
-  JMBG: 1
-  datum_rodjenja: 2017-11-09
-  mjesto_rodjenja: MyString
-  telefon: 1
+  name: MyString
+  surname: MyString
+  JBMG: 1
+  date_of_birth: 2017-11-12
+  place_of_birth: MyString
+  telephone_number: 1
   email: MyString
-  spol: MyString
-  cv: MyString
-  motivaciono_pismo: MyString
+  gender: MyString
+  CV: MyText
+  motivation_letter: MyText
+  job_advertisements: one
 
 two:
-  ime: MyString
-  prezime: MyString
-  JMBG: 1
-  datum_rodjenja: 2017-11-09
-  mjesto_rodjenja: MyString
-  telefon: 1
+  name: MyString
+  surname: MyString
+  JBMG: 1
+  date_of_birth: 2017-11-12
+  place_of_birth: MyString
+  telephone_number: 1
   email: MyString
-  spol: MyString
-  cv: MyString
-  motivaciono_pismo: MyString
+  gender: MyString
+  CV: MyText
+  motivation_letter: MyText
+  job_advertisements: two

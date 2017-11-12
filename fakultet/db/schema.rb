@@ -10,21 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111123053) do
+ActiveRecord::Schema.define(version: 20171112121553) do
 
-  create_table "job_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "ime"
-    t.string "prezime"
-    t.integer "JMBG"
-    t.date "datum_rodjenja"
-    t.string "mjesto_rodjenja"
-    t.integer "telefon"
-    t.string "email"
-    t.string "spol"
-    t.string "cv"
-    t.string "motivaciono_pismo"
+  create_table "job_advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "work_position"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "job_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+    t.string "name"
+    t.string "last_name"
+    t.integer "JBMG"
+    t.date "date_of_birth"
+    t.string "place_of_birth"
+    t.integer "telephone_number"
+    t.string "email"
+    t.string "gender"
+    t.text "CV"
+    t.text "motivation_letter"
+    t.bigint "job_advertisements_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["job_advertisements_id"], name: "index_job_applications_on_job_advertisements_id"
   end
 
   create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -43,4 +51,5 @@ ActiveRecord::Schema.define(version: 20171111123053) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "job_applications", "job_advertisements", column: "job_advertisements_id"
 end

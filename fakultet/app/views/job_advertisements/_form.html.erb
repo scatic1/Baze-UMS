@@ -1,0 +1,22 @@
+<%= form_with(model: job_advertisement, local: true) do |form| %>
+  <% if job_advertisement.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(job_advertisement.errors.count, "error") %> prohibited this job_advertisement from being saved:</h2>
+
+      <ul>
+      <% job_advertisement.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :work_position %>
+    <%= form.text_field :work_position, id: :job_advertisement_work_position %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

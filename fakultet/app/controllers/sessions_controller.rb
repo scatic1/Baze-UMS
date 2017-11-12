@@ -1,6 +1,14 @@
 class SessionsController < ApplicationController
+ auto_session_timeout_actions
  before_action :must_login, only: [:about]
   def new
+  end
+  def active
+   render_session_status
+  end
+  
+  def timeout
+    render_session_timeout
   end
  def create
   	user = User.find_by(username: params[:username])
@@ -8,7 +16,7 @@ class SessionsController < ApplicationController
   	if user && user.authenticate(params[:password])
   		session[:user_id] = user.id
 
-  		flash[:success] ="Welcome #{current_user.name}!"
+  		#flash[:success] ="Welcome #{current_user.name}!"
 
   		redirect_to root_path
   	else

@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  resources :job_applications
-  resources :job_advertisements
+  resources :job_applications 
+     resources :job_advertisements
 match 'active'  => 'sessions#active',  via: :get
 match 'timeout' => 'sessions#timeout', via: :get
 get 'sessions/new'
@@ -18,7 +18,10 @@ get 'sessions/new'
   get "about" => "welcome#about", as: :about
   get "blog" => "welcome#blog", as: :blog
   get "contact" => "welcome#contact", as: :contact
+   get "newapp" => "job_applications#new", as: :newapp
   get "new_advertisement"=>"job_advertisements#new", as: :new_advertisement
-  get "new_application"=>"job_applications#new", as: :new_application
+    get "/:id",to: 'job_advertisements#edit' ,as: :editjobadvertisement
+get "/:id", to: 'job_advertisements#show', as: :showjob
+
 
 end

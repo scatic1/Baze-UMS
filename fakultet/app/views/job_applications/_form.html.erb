@@ -11,59 +11,59 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name, id: :job_application_name %>
+    <%= form.text_field :name,class:"form-control col-sm-5", id: :job_application_name %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :surname %>
-    <%= form.text_field :surname, id: :job_application_surname %>
+    <%= form.text_field :surname,class:"form-control col-sm-5", id: :job_application_surname %>
   </div>
 
-  <div class="field">
-    <%= form.label :JBMG %>
-    <%= form.number_field :JBMG, id: :job_application_JBMG %>
+  <div class="form-group">
+    <%= form.label :JMBG %>
+    <%= form.number_field :JBMG,class:"form-control col-sm-5", id: :job_application_JBMG %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :date_of_birth %>
-    <%= form.date_select :date_of_birth, id: :job_application_date_of_birth %>
+    <%= form.date_select :date_of_birth,class:"form-control col-sm-5", id: :job_application_date_of_birth %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :place_of_birth %>
-    <%= form.text_field :place_of_birth, id: :job_application_place_of_birth %>
+    <%= form.text_field :place_of_birth,class:"form-control col-sm-5", id: :job_application_place_of_birth %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :telephone_number %>
-    <%= form.number_field :telephone_number, id: :job_application_telephone_number %>
+    <%= form.number_field :telephone_number,class:"form-control col-sm-5", id: :job_application_telephone_number %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :email %>
-    <%= form.text_field :email, id: :job_application_email %>
+    <%= form.text_field :email, class:"form-control col-sm-5",id: :job_application_email %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :gender %>
-    <%= form.text_field :gender, id: :job_application_gender %>
+    <%= form.text_field :gender,class:"form-control col-sm-5", id: :job_application_gender %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :CV %>
-    <%= form.text_area :CV, id: :job_application_CV %>
+    <%= form.text_area :CV,class:"form-control col-sm-5", id: :job_application_CV %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :motivation_letter %>
-    <%= form.text_area :motivation_letter, id: :job_application_motivation_letter %>
+    <%= form.text_area :motivation_letter,class:"form-control col-sm-5", id: :job_application_motivation_letter %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :job_advertisements_id %>
-    <%= form.text_field :job_advertisements_id, id: :job_application_job_advertisements_id %>
+    <%= form.text_field :job_advertisements_id,class:"form-control col-sm-5", id: :job_application_job_advertisements_id %>
   </div>
 
   <div class="actions">

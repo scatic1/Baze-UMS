@@ -108,13 +108,14 @@
       </div>
       <div class="bg-faded p-4 my-4">
         <hr class="divider">
-         <p class="m-0">Konkursi</p>
+        <h2 class="text-center text-lg text-uppercase my-0">Konkursi</h2>
+         <hr class="divider">
          <tbody>
 
          <% @job_advertisements.each do |job_advertisement| %>
            <tr>
 
-             <td><%= link_to job_advertisement.work_position, new_application_path %></td>
+             <td><%= link_to job_advertisement.work_position, newapp_path %></td><br/>
 
            </tr>
          </tbody>

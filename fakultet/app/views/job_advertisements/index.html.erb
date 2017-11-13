@@ -1,12 +1,14 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
-<h1>Job Advertisements</h1>
 
-<table>
-  <thead>
+
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Work position</th>
-      <th colspan="3"></th>
+      <th scope="col">Work position</th>
+      <th scope="col"></th>
+      <th scope="col"></th>
+      <th scope="col"></th>
     </tr>
   </thead>
 
@@ -14,9 +16,9 @@
     <% @job_advertisements.each do |job_advertisement| %>
       <tr>
         <td><%= job_advertisement.work_position %></td>
-        <td><%= link_to 'Show', job_advertisement %></td>
-        <td><%= link_to 'Edit', edit_job_advertisement_path(job_advertisement) %></td>
-        <td><%= link_to 'Destroy', job_advertisement, :method => :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', showjob_path(job_advertisement) %></td>
+        <td><%= link_to 'Edit', editjobadvertisement_path(job_advertisement) %></td>
+        <td><%= link_to 'Destroy', job_advertisements_path(job_advertisement), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

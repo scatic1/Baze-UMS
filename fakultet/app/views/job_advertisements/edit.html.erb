@@ -1,6 +1,9 @@
+
+
+    <!-- Custom styles for this template -->
 <h1>Editing Job Advertisement</h1>
 
 <%= render 'form', job_advertisement: @job_advertisement %>
 
-<%= link_to 'Show', @job_advertisement %> |
+<%= link_to 'Show', showjob_path(@job_advertisement) %> |
 <%= link_to 'Back', job_advertisements_path %>

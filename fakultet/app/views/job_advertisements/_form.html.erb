@@ -12,11 +12,13 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :work_position %>
-    <%= form.text_field :work_position, id: :job_advertisement_work_position %>
+    <%= form.label :work_position ,class:"control-label col-sm-2" %>
+    <%= form.text_field :work_position,class:"form-control col-sm-2", id: :job_advertisement_work_position %>
   </div>
-
+<br/>
   <div class="actions">
-    <%= form.submit %>
+   <div class="form-group">
+      <%= submit_tag 'Submit',class:"btn btn-dark"%>
+    </div>
   </div>
 <% end %>

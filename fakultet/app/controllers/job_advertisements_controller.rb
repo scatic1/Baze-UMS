@@ -1,6 +1,6 @@
 class JobAdvertisementsController < ApplicationController
   before_action :set_job_advertisement, only: [:show, :edit, :update, :destroy]
-
+before_action :must_login, only: [:edit,:show,:update,:destroy,:index]
   # GET /job_advertisements
   # GET /job_advertisements.json
   def index
@@ -33,8 +33,10 @@ class JobAdvertisementsController < ApplicationController
 
     respond_to do |format|
       if @job_advertisement.save
-        format.html { redirect_to @job_advertisement, notice: 'Job advertisement was successfully created.' }
-        format.json { render :show, status: :created, location: @job_advertisement }
+
+        format.json { render :show, status: :created, location: @job_advertisement}
+     
+        format.html { redirect_to job_advertisements_path, notice: 'Job advertisement  was successfully created.' } 
       else
         format.html { render :new }
         format.json { render json: @job_advertisement.errors, status: :unprocessable_entity }
@@ -47,25 +49,26 @@ class JobAdvertisementsController < ApplicationController
   def update
     respond_to do |format|
       if @job_advertisement.update(job_advertisement_params)
-        format.html { redirect_to @job_advertisement, notice: 'Job advertisement was successfully updated.' }
+        format.html { redirect_to job_advertisements_path, notice: 'Job advertisement was successfully updated.' }
         format.json { render :show, status: :ok, location: @job_advertisement }
       else
         format.html { render :edit }
         format.json { render json: @job_advertisement.errors, status: :unprocessable_entity }
       end
-    end
+    end 
   end
 
   # DELETE /job_advertisements/1
   # DELETE /job_advertisements/1.json
-  def destroy
+  
+ def destroy
+  
     @job_advertisement.destroy
     respond_to do |format|
-      format.html { redirect_to job_advertisements_url, notice: 'Job advertisement was successfully destroyed.' }
+      format.html { redirect_to job_advertisements_path, notice: 'Job advertisement was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_job_advertisement
@@ -76,4 +79,5 @@ class JobAdvertisementsController < ApplicationController
     def job_advertisement_params
       params.require(:job_advertisement).permit(:work_position)
     end
+   
 end

@@ -1,12 +1,12 @@
 class JobAdvertisementsController < ApplicationController
   before_action :set_job_advertisement, only: [:show, :edit, :update, :destroy]
-before_action :must_login, only: [:edit,:show,:update,:destroy,:index]
+#before_action :must_login, only: [:edit,:show,:update,:destroy,:index]
   # GET /job_advertisements
   # GET /job_advertisements.json
   def index
     @job_advertisements = JobAdvertisement.all
 
-    @job_application = JobApplication.new()
+    #@job_application = JobApplication.new()
   end
 
   # GET /job_advertisements/1
@@ -17,8 +17,8 @@ before_action :must_login, only: [:edit,:show,:update,:destroy,:index]
   # GET /job_advertisements/new
   def new
     @job_advertisement = JobAdvertisement.new()
-    @job_advertisements = JobAdvertisement.all
-    @job_application = JobApplication.new()
+    #@job_advertisements = JobAdvertisement.all
+   # @job_application = JobApplication.new()
   end
 
   # GET /job_advertisements/1/edit

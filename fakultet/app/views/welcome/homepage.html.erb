@@ -115,7 +115,7 @@
          <% @job_advertisements.each do |job_advertisement| %>
            <tr>
 
-             <td><%= link_to job_advertisement.work_position, newapp_path %></td><br/>
+             <td><%= link_to job_advertisement.work_position, newapp_path(job_advertisement) %></td><br/>
 
            </tr>
          </tbody>

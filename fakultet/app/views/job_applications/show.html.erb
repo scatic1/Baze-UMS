@@ -1,4 +1,4 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <p>
   <strong>Name:</strong>
@@ -11,7 +11,7 @@
 </p>
 
 <p>
-  <strong>Jbmg:</strong>
+  <strong>JMBG:</strong>
   <%= @job_application.JBMG %>
 </p>
 
@@ -55,5 +55,5 @@
   <%= @job_application.job_advertisements_id %>
 </p>
 
-<%= link_to 'Edit', edit_job_application_path(@job_application) %> |
+<%= link_to 'Edit', editapp_path(@job_application) %> |
 <%= link_to 'Back', job_applications_path %>

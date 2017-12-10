@@ -18,7 +18,7 @@
         <td><%= job_advertisement.work_position %></td>
         <td><%= link_to 'Show', showjob_path(job_advertisement) %></td>
         <td><%= link_to 'Edit', editjobadvertisement_path(job_advertisement) %></td>
-        <td><%= link_to 'Destroy', job_advertisements_path(job_advertisement), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', job_advertisement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

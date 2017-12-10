@@ -14,7 +14,7 @@ class JobApplicationsController < ApplicationController
      @job_advertisements=JobAdvertisement.all
   end
 
-  # GET /job_applications/new
+  # GET /job_applications/new 
   def new
     @job_application = JobApplication.new()
      @job_advertisements=JobAdvertisement.all
@@ -63,14 +63,20 @@ class JobApplicationsController < ApplicationController
 
   # DELETE /job_applications/1
   # DELETE /job_applications/1.json
-  def destroy
-    @job_application.destroy
+ 
+def destroy
+  @job_application = JobApplication.find(params[:id])
 
-    respond_to do |format|
-      format.html { redirect_to job_applications_url, notice: 'Job application was successfully destroyed.' }
+  respond_to do |format|
+    if @job_application.destroy
+      format.html { redirect_to job_applications_url , notice: 'Job application was successfully destroyed.'}
+      format.json { head :no_content }
+    else
+      format.html # do something here
       format.json { head :no_content }
     end
   end
+end
 
   private
     # Use callbacks to share common setup or constraints between actions.

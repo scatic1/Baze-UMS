@@ -1,4 +1,5 @@
-<p id="notice"><%= notice %></p>
+
+<!--<p id="notice"><%= notice %></p>-->
 
 <h1>Job Applications</h1>
 
@@ -37,7 +38,7 @@
         
         <td><%= link_to 'Show', showapp_path(job_application) %></td>
         <td><%= link_to 'Edit', editapp_path(job_application) %></td>
-        <td><%= link_to 'Destroy', job_applications_path(job_application), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Destroy', job_application, data: { confirm: 'Are you sure?' }, method: :delete %></td>
       </tr>
     <% end %>
   </tbody>

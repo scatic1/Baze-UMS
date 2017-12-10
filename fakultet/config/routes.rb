@@ -19,6 +19,7 @@ get 'sessions/new'
   get "blog" => "welcome#blog", as: :blog
   get "contact" => "welcome#contact", as: :contact
    get "/new/:id" => "job_applications#new", as: :newapp
+   get "/newuser/:id" => "users#new", as: :newuser
    get "showapp{:id}" => "job_applications#show", as: :showapp
    get "editapp{:id}" => "job_applications#edit", as: :editapp
   get "new_advertisement"=>"job_advertisements#new", as: :new_advertisement

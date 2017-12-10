@@ -1,0 +1,70 @@
+
+<%= form_with(model: user, local: true) do |form| %>
+  <% if user.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+      <ul>
+      <% user.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name,:value => @job_application.name,class:"form-control col-sm-5", id: :user_name %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :last_name %>
+    <%= form.text_field :last_name,:value => @job_application.surname ,class:"form-control col-sm-5", id: :user_last_name %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :JMBG %>
+    <%= form.number_field :JMBG,:value => @job_application.JBMG,class:"form-control col-sm-5", id: :user_JMBG %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_of_birth %>
+    <%= form.date_select :date_of_birth,:value => @job_application.date_of_birth,class:"form-control col-sm-5", id: :user_date_of_birth %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :place_of_birth %>
+    <%= form.text_field :place_of_birth,:value => @job_application.place_of_birth,class:"form-control col-sm-5", id: :user_place_of_birth %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :phone %>
+    <%= form.number_field :phone,:value => @job_application.telephone_number,class:"form-control col-sm-5", id: :user_phone %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email, :value => @job_application.email,class:"form-control col-sm-5",id: :user_email %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.text_field :gender,:value => @job_application.gender,class:"form-control col-sm-5", id: :user_gender %>
+  </div>
+  <div class="form-group">
+    <%= form.label :username %>
+    <%= form.text_field :username,class:"form-control col-sm-5", id: :user_username %>
+  </div>
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.text_field :password,class:"form-control col-sm-5", id: :user_password %>
+  </div>
+
+ 
+
+  </tbody>
+</select> 
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

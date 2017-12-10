@@ -5,29 +5,35 @@ class JobApplicationsController < ApplicationController
   # GET /job_applications.json
   def index
     @job_applications = JobApplication.all
-    @job_advertisements=JobAdvertisement.all
+     @job_advertisements=JobAdvertisement.all
+     @job_advertisement=JobAdvertisement.find_by_id(params[:id])
   end
 
   # GET /job_applications/1
   # GET /job_applications/1.json
   def show
-     @job_advertisements=JobAdvertisement.all
+         @job_advertisements=JobAdvertisement.all
+     @job_advertisement=JobAdvertisement.find_by_id(params[:id])
   end
 
   # GET /job_applications/new 
   def new
     @job_application = JobApplication.new()
      @job_advertisements=JobAdvertisement.all
+     @job_advertisement=JobAdvertisement.find_by_id(params[:id])
   end
 
   # GET /job_applications/1/edit
   def edit
+        @job_advertisements=JobAdvertisement.all
+     @job_advertisement=JobAdvertisement.find_by_id(params[:id])
   end
 
   # POST /job_applications
   # POST /job_applications.json
   def create
-
+    @job_advertisements=JobAdvertisement.all
+     @job_advertisement=JobAdvertisement.find_by_id(params[:id])
     @job_application = JobApplication.new(job_application_params)
    #@job_advertisements=JobAdvertisement.all
    # @job_application = JobApplication.new()
@@ -50,6 +56,8 @@ class JobApplicationsController < ApplicationController
        # @job_application = JobApplication.new(job_application_params)
         #@job_advertisements=JobAdvertisement.all
          #@job_application = JobApplication.new()
+             @job_advertisements=JobAdvertisement.all
+     @job_advertisement=JobAdvertisement.find_by_id(params[:id])
     respond_to do |format|
       if @job_application.update(job_application_params)
         format.html { redirect_to showapp_path, notice: 'Job application was successfully updated.' }

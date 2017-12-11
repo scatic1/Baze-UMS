@@ -1,0 +1,53 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Students</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Jmbg</th>
+      <th>Birthday</th>
+      <th>Placebirth</th>
+      <th>Telephone</th>
+      <th>Email</th>
+      <th>Gender</th>
+      <th>Username</th>
+      <th>Password</th>
+      <th>Category</th>
+      <th>Index</th>
+      <th>Ects</th>
+      <th>Year</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @students.each do |student| %>
+      <tr>
+        <td><%= student.name %></td>
+        <td><%= student.surname %></td>
+        <td><%= student.jmbg %></td>
+        <td><%= student.birthday %></td>
+        <td><%= student.placebirth %></td>
+        <td><%= student.telephone %></td>
+        <td><%= student.email %></td>
+        <td><%= student.gender %></td>
+        <td><%= student.username %></td>
+        <td><%= student.password %></td>
+        <td><%= student.category %></td>
+        <td><%= student.index %></td>
+        <td><%= student.ects %></td>
+        <td><%= student.year %></td>
+        <td><%= link_to 'Show', student %></td>
+        <td><%= link_to 'Edit', edit_student_path(student) %></td>
+        <td><%= link_to 'Destroy', student, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Student', new_student_path %>

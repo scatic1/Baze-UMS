@@ -26,6 +26,7 @@ get 'sessions/new'
    get "new_advertisement"=>"job_advertisements#new", as: :new_advertisement
    get "editjobadvertisement{:id}",to: 'job_advertisements#edit' ,as: :editjobadvertisement
    get ":id", to: 'job_advertisements#show', as: :showjob
+   get "show_student{:id}" => "students#show", as: :show_tudent
    
 
 end

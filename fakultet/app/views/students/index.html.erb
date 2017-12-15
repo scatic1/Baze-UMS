@@ -1,29 +1,29 @@
-<p id="notice"><%= notice %></p>
+<!--<p id="notice"><%= notice %></p>-->
 
 <h1>Students</h1>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-dark">
     <tr>
-      <th>Name</th>
-      <th>Surname</th>
-      <th>Jmbg</th>
-      <th>Birthday</th>
-      <th>Placebirth</th>
-      <th>Telephone</th>
-      <th>Email</th>
-      <th>Gender</th>
-      <th>Username</th>
-      <th>Password</th>
-      <th>Category</th>
-      <th>Index</th>
-      <th>Ects</th>
-      <th>Year</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Jmbg</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Placebirth</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <!--<th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Category</th>-->
+      <th scope="col">Index</th>
+      <th scope="col">Ects</th>
+      <th scope="col">Year</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
-  <tbody>
+  <tbody> 
     <% @students.each do |student| %>
       <tr>
         <td><%= student.name %></td>
@@ -34,9 +34,9 @@
         <td><%= student.telephone %></td>
         <td><%= student.email %></td>
         <td><%= student.gender %></td>
-        <td><%= student.username %></td>
+        <!--<td><%= student.username %></td>
         <td><%= student.password %></td>
-        <td><%= student.category %></td>
+        <td><%= student.category %></td>-->
         <td><%= student.index %></td>
         <td><%= student.ects %></td>
         <td><%= student.year %></td>

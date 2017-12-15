@@ -76,18 +76,20 @@
             <li class="nav-item px-lg-4">
               <a class="nav-link text-uppercase text-expanded" <%= link_to "Contact",contact_path%></a>
             </li>-->
-            <%end%>
-            <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" <%= link_to "Log out",logout_path %></a>
-            </li>
-
-            <% if current_user.present? && current_user.category ==  'studentska sluzba' %>
+            <%end%> 
+<!--Ako je ulogovana studentska sluzba --> 
+            <% if current_user.present? && current_user.category ==  'studentskasluzba' %>
              <li class="nav-item px-lg-4">
 
                 <a class="nav-link text-uppercase text-expanded" <%= link_to "Upiši studenta",students_path%></a>
             </li>
            
            <%end%>
+            <li class="nav-item px-lg-4">
+              <a class="nav-link text-uppercase text-expanded" <%= link_to "Log out",logout_path %></a>
+            </li>
+
+           
            
             <%end%>
 

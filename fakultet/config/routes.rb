@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
+  resources :exam_applications
+  resources :exams
+  resources :subjects
   resources :students
-  resources :job_applications 
+  resources :job_applications
      resources :job_advertisements
 match 'active'  => 'sessions#active',  via: :get
 match 'timeout' => 'sessions#timeout', via: :get
@@ -27,6 +30,6 @@ get 'sessions/new'
    get "editjobadvertisement{:id}",to: 'job_advertisements#edit' ,as: :editjobadvertisement
    get ":id", to: 'job_advertisements#show', as: :showjob
    get "show_student{:id}" => "students#show", as: :show_tudent
-   
+  
 
 end

@@ -1,0 +1,32 @@
+<%= form_with(model: exam_application, local: true) do |form| %>
+  <% if exam_application.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(exam_application.errors.count, "error") %> prohibited this exam_application from being saved:</h2>
+
+      <ul>
+      <% exam_application.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :apply %>
+    <%= form.check_box :apply, id: :exam_application_apply %>
+  </div>
+
+  <div class="field">
+    <%= form.label :exam_id %>
+    <%= form.text_field :exam_id, id: :exam_application_exam_id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :student_id %>
+    <%= form.text_field :student_id, id: :exam_application_student_id %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

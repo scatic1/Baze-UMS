@@ -1,0 +1,23 @@
+<h1>Exams</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Exam time</th>
+      <th>Exam place</th>
+      <th>Subject</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <%  @exams.each do |exam| %>
+      <tr>
+        <td><%= exam.exam_time %></td>
+        <td><%= exam.exam_place %></td>
+        <td><%= exam.subject %></td>
+
+      </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  exam_time: 2017-12-15 23:38:36
+  exam_place: MyString
+  subject: one
+
+two:
+  exam_time: 2017-12-15 23:38:36
+  exam_place: MyString
+  subject: two

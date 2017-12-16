@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Apply:</strong>
+  <%= @exam_application.apply %>
+</p>
+
+<p>
+  <strong>Exam:</strong>
+  <%= @exam_application.exam %>
+</p>
+
+<p>
+  <strong>Student:</strong>
+  <%= @exam_application.student %>
+</p>
+
+<%= link_to 'Edit', edit_exam_application_path(@exam_application) %> |
+<%= link_to 'Back', exam_applications_path %>

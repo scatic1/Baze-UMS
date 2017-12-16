@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  ECTS: 1
+  cycle: 1
+  semester: 1
+  subject_type: MyString
+
+two:
+  title: MyString
+  ECTS: 1
+  cycle: 1
+  semester: 1
+  subject_type: MyString

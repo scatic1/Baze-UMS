@@ -11,19 +11,19 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :exam_time %>
-    <%= form.datetime_select :exam_time, id: :exam_exam_time %>
+    <%= form.datetime_select :exam_time,class:"form-control col-sm-5", id: :exam_exam_time %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :exam_place %>
-    <%= form.text_field :exam_place, id: :exam_exam_place %>
+    <%= form.text_field :exam_place,class:"form-control col-sm-5", id: :exam_exam_place %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :subject_id %>
-    <%= form.text_field :subject_id, id: :exam_subject_id %>
+    <%= form.text_field :subject_id,class:"form-control col-sm-5", id: :exam_subject_id %>
   </div>
 
   <div class="actions">

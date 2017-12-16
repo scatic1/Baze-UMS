@@ -11,29 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :title %>
-    <%= form.text_field :title, id: :subject_title %>
+    <%= form.text_field :title, class:"form-control col-sm-5",id: :subject_title %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :ECTS %>
-    <%= form.number_field :ECTS, id: :subject_ECTS %>
+    <%= form.number_field :ECTS,class:"form-control col-sm-5", id: :subject_ECTS %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :cycle %>
-    <%= form.number_field :cycle, id: :subject_cycle %>
+    <%= form.number_field :cycle,class:"form-control col-sm-5", id: :subject_cycle %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :semester %>
-    <%= form.number_field :semester, id: :subject_semester %>
+    <%= form.number_field :semester,class:"form-control col-sm-5", id: :subject_semester %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :subject_type %>
-    <%= form.text_field :subject_type, id: :subject_subject_type %>
+    <%= form.text_field :subject_type,class:"form-control col-sm-5", id: :subject_subject_type %>
   </div>
 
   <div class="actions">

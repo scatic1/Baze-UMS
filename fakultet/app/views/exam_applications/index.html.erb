@@ -19,7 +19,7 @@
         <td><%= exam.subject.title%></td>
         <td><%= exam.exam_time %></td>
         <td><%= exam.exam_place %></td>
-        <td><%= link_to 'Apply', new_exam_application_path %></td>
+        <td><%= link_to 'Apply', apply_exam_application_path(exam.id) %></td>
 
       </tr>
 <% end %>

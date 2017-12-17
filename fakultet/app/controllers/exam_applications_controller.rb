@@ -5,32 +5,46 @@ class ExamApplicationsController < ApplicationController
   # GET /exam_applications.json
   def index
     @exam_applications = ExamApplication.all
-    @exams = Exam.all
+     @exams = Exam.all
+     @exam=Exam.find_by_id(params[:id])
+     @examtitle=Exam.find_by_id(params[:title])
     
   end
 
   # GET /exam_applications/1
   # GET /exam_applications/1.json
   def show
+     @exams = Exam.all
+     @exam=Exam.find_by_id(params[:id])
+  
+
   end
 
   # GET /exam_applications/new
   def new
     @exam_application = ExamApplication.new
+    @exams = Exam.all
+     @exam=Exam.find_by_id(params[:id])
+        @current_user ||= User.find(session[:user_id]) if session[:user_id]
   end
 
   # GET /exam_applications/1/edit
   def edit
+     @exams = Exam.all
+     @exam=Exam.find_by_id(params[:id])
+     
   end
 
   # POST /exam_applications
   # POST /exam_applications.json
   def create
     @exam_application = ExamApplication.new(exam_application_params)
-
+ @exams = Exam.all
+     @exam=Exam.find_by_id(params[:id])
+    
     respond_to do |format|
       if @exam_application.save
-        format.html { redirect_to @exam_application, notice: 'Exam application was successfully created.' }
+        format.html { redirect_to exam_applications_path, notice: 'Exam application was successfully created.' }
         format.json { render :show, status: :created, location: @exam_application }
       else
         format.html { render :new }
@@ -42,6 +56,9 @@ class ExamApplicationsController < ApplicationController
   # PATCH/PUT /exam_applications/1
   # PATCH/PUT /exam_applications/1.json
   def update
+     @exams = Exam.all
+     @exam=Exam.find_by_id(params[:id])
+     @currentUser = current_user.id
     respond_to do |format|
       if @exam_application.update(exam_application_params)
         format.html { redirect_to @exam_application, notice: 'Exam application was successfully updated.' }

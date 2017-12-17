@@ -29,7 +29,10 @@ get 'sessions/new'
    get "new_advertisement"=>"job_advertisements#new", as: :new_advertisement
    get "editjobadvertisement{:id}",to: 'job_advertisements#edit' ,as: :editjobadvertisement
    get ":id", to: 'job_advertisements#show', as: :showjob
-   get "show_student{:id}" => "students#show", as: :show_tudent
+   get "show_student{:id}" => "students#show", as: :show_student
+   get "show_subject{:id}" => "subjects#show", as: :show_subject
+   get "show_exam{:id}" => "exams#show", as: :show_exam
+   get "/apply_exam_application/:id" => "exam_applications#new", as: :apply_exam_application
   
 
 end

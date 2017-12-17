@@ -1,13 +1,15 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.4
+-- version 4.7.4
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 16, 2017 at 12:59 AM
--- Server version: 5.7.14
--- PHP Version: 5.6.25
+-- Host: 127.0.0.1:3306
+-- Generation Time: Dec 17, 2017 at 05:54 PM
+-- Server version: 5.7.19
+-- PHP Version: 5.6.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -26,11 +28,13 @@ SET time_zone = "+00:00";
 -- Table structure for table `ar_internal_metadata`
 --
 
-CREATE TABLE `ar_internal_metadata` (
+DROP TABLE IF EXISTS `ar_internal_metadata`;
+CREATE TABLE IF NOT EXISTS `ar_internal_metadata` (
   `key` varchar(255) NOT NULL,
   `value` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`key`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -46,23 +50,24 @@ INSERT INTO `ar_internal_metadata` (`key`, `value`, `created_at`, `updated_at`) 
 -- Table structure for table `exams`
 --
 
-CREATE TABLE `exams` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `exams`;
+CREATE TABLE IF NOT EXISTS `exams` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `exam_time` datetime DEFAULT NULL,
   `exam_place` varchar(255) DEFAULT NULL,
   `subject_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_exams_on_subject_id` (`subject_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `exams`
 --
 
 INSERT INTO `exams` (`id`, `exam_time`, `exam_place`, `subject_id`, `created_at`, `updated_at`) VALUES
-(1, '2017-12-18 02:20:00', 'VA', 2, '2017-12-15 22:40:20', '2017-12-15 22:40:20'),
-(2, '2017-12-15 22:43:00', 'Ma', 2, '2017-12-15 22:43:45', '2017-12-15 22:43:45'),
-(4, '2017-12-16 00:55:00', 'S0', 3, '2017-12-16 00:55:26', '2017-12-16 00:55:26');
+(1, '2017-12-17 16:11:00', 'VA', 1, '2017-12-17 16:11:56', '2017-12-17 16:11:56');
 
 -- --------------------------------------------------------
 
@@ -70,14 +75,25 @@ INSERT INTO `exams` (`id`, `exam_time`, `exam_place`, `subject_id`, `created_at`
 -- Table structure for table `exam_applications`
 --
 
-CREATE TABLE `exam_applications` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `exam_applications`;
+CREATE TABLE IF NOT EXISTS `exam_applications` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `apply` tinyint(1) DEFAULT NULL,
   `exam_id` bigint(20) DEFAULT NULL,
   `student_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_exam_applications_on_exam_id` (`exam_id`),
+  KEY `index_exam_applications_on_student_id` (`student_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `exam_applications`
+--
+
+INSERT INTO `exam_applications` (`id`, `apply`, `exam_id`, `student_id`, `created_at`, `updated_at`) VALUES
+(4, 1, 1, 1, '2017-12-17 17:53:06', '2017-12-17 17:53:06');
 
 -- --------------------------------------------------------
 
@@ -85,12 +101,14 @@ CREATE TABLE `exam_applications` (
 -- Table structure for table `job_advertisements`
 --
 
-CREATE TABLE `job_advertisements` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `job_advertisements`;
+CREATE TABLE IF NOT EXISTS `job_advertisements` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `work_position` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_advertisements`
@@ -107,8 +125,9 @@ INSERT INTO `job_advertisements` (`id`, `work_position`, `created_at`, `updated_
 -- Table structure for table `job_applications`
 --
 
-CREATE TABLE `job_applications` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `job_applications`;
+CREATE TABLE IF NOT EXISTS `job_applications` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `surname` varchar(255) DEFAULT NULL,
   `JBMG` int(11) DEFAULT NULL,
@@ -121,8 +140,10 @@ CREATE TABLE `job_applications` (
   `motivation_letter` text,
   `job_advertisements_id` bigint(20) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `index_job_applications_on_job_advertisements_id` (`job_advertisements_id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `job_applications`
@@ -138,8 +159,10 @@ INSERT INTO `job_applications` (`id`, `name`, `surname`, `JBMG`, `date_of_birth`
 -- Table structure for table `schema_migrations`
 --
 
-CREATE TABLE `schema_migrations` (
-  `version` varchar(255) NOT NULL
+DROP TABLE IF EXISTS `schema_migrations`;
+CREATE TABLE IF NOT EXISTS `schema_migrations` (
+  `version` varchar(255) NOT NULL,
+  PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -154,7 +177,6 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 ('20171112121553'),
 ('20171211015822'),
 ('20171215221535'),
-('20171215223020'),
 ('20171215223836'),
 ('20171215235454');
 
@@ -164,8 +186,9 @@ INSERT INTO `schema_migrations` (`version`) VALUES
 -- Table structure for table `students`
 --
 
-CREATE TABLE `students` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `students`;
+CREATE TABLE IF NOT EXISTS `students` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `surname` varchar(255) DEFAULT NULL,
   `jmbg` int(11) DEFAULT NULL,
@@ -181,8 +204,9 @@ CREATE TABLE `students` (
   `ects` int(11) DEFAULT NULL,
   `year` int(11) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `students`
@@ -197,24 +221,25 @@ INSERT INTO `students` (`id`, `name`, `surname`, `jmbg`, `birthday`, `placebirth
 -- Table structure for table `subjects`
 --
 
-CREATE TABLE `subjects` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `subjects`;
+CREATE TABLE IF NOT EXISTS `subjects` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `title` varchar(255) DEFAULT NULL,
   `ECTS` int(11) DEFAULT NULL,
   `cycle` int(11) DEFAULT NULL,
   `semester` int(11) DEFAULT NULL,
   `subject_type` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjects`
 --
 
 INSERT INTO `subjects` (`id`, `title`, `ECTS`, `cycle`, `semester`, `subject_type`, `created_at`, `updated_at`) VALUES
-(2, 'Programiranje', 6, 1, 1, 'Obavezni', '2017-12-15 22:33:17', '2017-12-15 22:33:17'),
-(3, 'Baze', 5, 2, 1, 'Obavezni', '2017-12-16 00:54:47', '2017-12-16 00:54:47');
+(1, 'PRS', 5, 1, 1, 'obavezni', '2017-12-17 16:03:38', '2017-12-17 16:05:30');
 
 -- --------------------------------------------------------
 
@@ -222,8 +247,9 @@ INSERT INTO `subjects` (`id`, `title`, `ECTS`, `cycle`, `semester`, `subject_typ
 -- Table structure for table `users`
 --
 
-CREATE TABLE `users` (
-  `id` bigint(20) NOT NULL,
+DROP TABLE IF EXISTS `users`;
+CREATE TABLE IF NOT EXISTS `users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `name` varchar(255) DEFAULT NULL,
   `last_name` varchar(255) DEFAULT NULL,
   `JMBG` int(13) DEFAULT NULL,
@@ -236,119 +262,10 @@ CREATE TABLE `users` (
   `password_digest` varchar(255) DEFAULT NULL,
   `category` varchar(255) DEFAULT NULL,
   `created_at` datetime NOT NULL,
-  `updated_at` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+  `updated_at` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `users`
---
-
-INSERT INTO `users` (`id`, `name`, `last_name`, `JMBG`, `date_of_birth`, `place_of_birth`, `phone`, `email`, `gender`, `username`, `password_digest`, `category`, `created_at`, `updated_at`) VALUES
-(1, 'Amina', 'Mahmutovic', 1234567, '1995-11-03', 'Konjic', 62410231, 'amina@gmail.com', 'zensko', 'amina', '$2a$10$rViZ7Qmg7RzRsFeZQ9oMIewQHMnVLK6gJUQHxo6WXDMmPgx/nC//i', 'pravnik', '2017-11-11 00:00:00', '2017-11-11 00:00:00'),
-(2, 'Delila', 'Halilovic', 123456, '2017-12-01', 'Sarajevo', 61234567, 'delila@gmail.com', 'zensko', 'delila', '$2a$10$rViZ7Qmg7RzRsFeZQ9oMIewQHMnVLK6gJUQHxo6WXDMmPgx/nC//i', 'studentskasluzba', '2017-12-10 00:00:00', '2017-12-10 00:00:00'),
-(3, 'Selsebil', 'Catic', 1234567, '2017-12-10', 'Aman', 12345678, 'selsa@gmail.com', 'zensko', 'selsebil', '$2a$10$rViZ7Qmg7RzRsFeZQ9oMIewQHMnVLK6gJUQHxo6WXDMmPgx/nC//i', 'student', '2017-12-10 20:28:04', '2017-12-10 20:28:04');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `ar_internal_metadata`
---
-ALTER TABLE `ar_internal_metadata`
-  ADD PRIMARY KEY (`key`);
-
---
--- Indexes for table `exams`
---
-ALTER TABLE `exams`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index_exams_on_subject_id` (`subject_id`);
-
---
--- Indexes for table `exam_applications`
---
-ALTER TABLE `exam_applications`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index_exam_applications_on_exam_id` (`exam_id`),
-  ADD KEY `index_exam_applications_on_student_id` (`student_id`);
-
---
--- Indexes for table `job_advertisements`
---
-ALTER TABLE `job_advertisements`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `job_applications`
---
-ALTER TABLE `job_applications`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `index_job_applications_on_job_advertisements_id` (`job_advertisements_id`);
-
---
--- Indexes for table `schema_migrations`
---
-ALTER TABLE `schema_migrations`
-  ADD PRIMARY KEY (`version`);
-
---
--- Indexes for table `students`
---
-ALTER TABLE `students`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `subjects`
---
-ALTER TABLE `subjects`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `users`
---
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `exams`
---
-ALTER TABLE `exams`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `exam_applications`
---
-ALTER TABLE `exam_applications`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT;
---
--- AUTO_INCREMENT for table `job_advertisements`
---
-ALTER TABLE `job_advertisements`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
---
--- AUTO_INCREMENT for table `job_applications`
---
-ALTER TABLE `job_applications`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
---
--- AUTO_INCREMENT for table `students`
---
-ALTER TABLE `students`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `subjects`
---
-ALTER TABLE `subjects`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
---
--- AUTO_INCREMENT for table `users`
---
-ALTER TABLE `users`
-  MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 --
 -- Constraints for dumped tables
 --
@@ -371,6 +288,7 @@ ALTER TABLE `exam_applications`
 --
 ALTER TABLE `job_applications`
   ADD CONSTRAINT `fk_rails_50734fd3c1` FOREIGN KEY (`job_advertisements_id`) REFERENCES `job_advertisements` (`id`);
+COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

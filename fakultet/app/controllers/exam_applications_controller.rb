@@ -8,15 +8,18 @@ class ExamApplicationsController < ApplicationController
      @exams = Exam.all
      @exam=Exam.find_by_id(params[:id])
      @examtitle=Exam.find_by_id(params[:title])
-    
+
   end
 
   # GET /exam_applications/1
   # GET /exam_applications/1.json
   def show
      @exams = Exam.all
-     @exam=Exam.find_by_id(params[:id])
-  
+     @exam_applications = ExamApplication.all
+
+  @exam_application = ExamApplication.new
+    @exam = Exam.new
+
 
   end
 
@@ -32,7 +35,7 @@ class ExamApplicationsController < ApplicationController
   def edit
      @exams = Exam.all
      @exam=Exam.find_by_id(params[:id])
-     
+
   end
 
   # POST /exam_applications
@@ -41,7 +44,7 @@ class ExamApplicationsController < ApplicationController
     @exam_application = ExamApplication.new(exam_application_params)
  @exams = Exam.all
      @exam=Exam.find_by_id(params[:id])
-    
+
     respond_to do |format|
       if @exam_application.save
         format.html { redirect_to exam_applications_path, notice: 'Exam application was successfully created.' }
@@ -83,7 +86,7 @@ class ExamApplicationsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_exam_application
-      @exam_application = ExamApplication.find(params[:id])
+      @exam_application = ExamApplication.new
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.

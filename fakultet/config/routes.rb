@@ -33,6 +33,6 @@ get 'sessions/new'
    get "show_subject{:id}" => "subjects#show", as: :show_subject
    get "show_exam{:id}" => "exams#show", as: :show_exam
    get "/apply_exam_application/:id" => "exam_applications#new", as: :apply_exam_application
-  
+  get "/showexam/:id/" => "exam_applications#show", as: :showexam
 
 end

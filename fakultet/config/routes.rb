@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :confirmations
   resources :exam_applications
   resources :exams
   resources :subjects
@@ -19,6 +20,12 @@ get 'sessions/new'
   get 'logout', to: 'sessions#destroy'
   post 'login', to: 'sessions#create'
 
+
+ resources :confirmations do
+get :download_resume
+end
+get 'download', to: 'confirmations#index'
+
   get "about" => "welcome#about", as: :about
   get "blog" => "welcome#blog", as: :blog
   get "contact" => "welcome#contact", as: :contact
@@ -34,5 +41,7 @@ get 'sessions/new'
    get "show_exam{:id}" => "exams#show", as: :show_exam
    get "/apply_exam_application/:id" => "exam_applications#new", as: :apply_exam_application
   get "/showexam/:id/" => "exam_applications#show", as: :showexam
+
+ 
 
 end

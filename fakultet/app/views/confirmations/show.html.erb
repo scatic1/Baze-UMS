@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Svrha:</strong>
+  <%= @confirmation.svrha %>
+</p>
+
+<p>
+  <strong>Ime:</strong>
+  <%= @confirmation.ime %>
+</p>
+
+<p>
+  <strong>Prezime:</strong>
+  <%= @confirmation.prezime %>
+</p>
+
+<%= link_to 'Edit', edit_confirmation_path(@confirmation) %> |
+<%= link_to 'Back', confirmations_path %>

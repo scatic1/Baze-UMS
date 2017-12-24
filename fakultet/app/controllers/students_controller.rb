@@ -5,7 +5,10 @@ class StudentsController < ApplicationController
   # GET /students.json
   def index
     @students = Student.all
+
+
   end
+
 
   # GET /students/1
   # GET /students/1.json
@@ -15,7 +18,20 @@ class StudentsController < ApplicationController
   # GET /students/new
   def new
     @student = Student.new
+    require 'csv'
+
+  csv_text = File.read('csv.csv')
+  csv = CSV.parse(csv_text, :headers => true, :col_sep => ';')
+
+csv.each do |row|
+
+  Student.create(:id => row[0], :name => row[1], :surname => row[2], :jmbg => row[3],:birthday => row[4], :placebirth =>row[5], :telephone =>row[6], :email =>row[7], :gender => row[8],:username=>row[9],
+    :password=>row[10],:category =>row[11], :index =>row[12],:ects =>row[13], :year =>row[14], :subject_id => row[15], :points=>row[16], :mark=>row[17])
+end
   end
+  def import
+      @student = Student.new(student_params)
+end
 
   # GET /students/1/edit
   def edit

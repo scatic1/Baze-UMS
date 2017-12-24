@@ -1,0 +1,5 @@
+id;name;surname;jmbg;birthday;placebirth;telephone;email;gender;username;password;category;index;ects;year;subject_id;points;mark
+1;Sumi;Halilovic;123456;2017-12-11;Visoko;62134567;sumi@gmail.com;zensko;sumi;sumi;student;1234;0;1;1;78.3;8
+2;Amina;Mahmutovic;781235;1995-03-11;Konjic;062518676;amina@gmail.com;zensko;amina;amina;student;17043;25;3;1;71.5;7
+3;Selsebil;Catic;563129;1995-11-03;Aman;062341523;selsa@gmail.com;zenko;selsa;selsa;student;16043;10;2;1;89;9
+4;Delila;Halilovic;125678;1996-12-01;Breza;061234123;delila@gmail.com;zensko;delila;delila;student;17032;35;4;1;80.7;8

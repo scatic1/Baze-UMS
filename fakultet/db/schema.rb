@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171222203300) do
+ActiveRecord::Schema.define(version: 20171224210922) do
 
   create_table "confirmations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "svrha"
@@ -79,6 +79,11 @@ ActiveRecord::Schema.define(version: 20171222203300) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "subject_id"
+    t.bigint "subject_id_id"
+    t.float "points", limit: 24
+    t.integer "mark"
+    t.index ["subject_id_id"], name: "index_students_on_subject_id_id"
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -87,22 +92,6 @@ ActiveRecord::Schema.define(version: 20171222203300) do
     t.integer "cycle"
     t.integer "semester"
     t.string "subject_type"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.string "name"
-    t.string "last_name"
-    t.integer "JMBG"
-    t.date "date_of_birth"
-    t.string "place_of_birth"
-    t.integer "phone"
-    t.string "email"
-    t.string "gender"
-    t.string "username"
-    t.string "password_digest"
-    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

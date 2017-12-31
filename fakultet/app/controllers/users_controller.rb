@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
-	
+
   before_action :must_login, only: [:about]
-	
+
 	def index
     @users = User.all
     @job_applications=JobApplication.all
@@ -19,7 +19,7 @@ class UsersController < ApplicationController
 		  @job_applications=JobApplication.all
 		  @job_application=JobApplication.find_by_id(params[:id])
 	end
-  
+
 
   # GET /job_applications/1/edit
   def edit
@@ -64,7 +64,7 @@ class UsersController < ApplicationController
 
   # DELETE /job_applications/1
   # DELETE /job_applications/1.json
- 
+
 def destroy
   @user = User.find(params[:id])
 
@@ -87,6 +87,6 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
-      params.require(:user).permit(:name, :last_name, :JMBG, :date_of_birth, :place_of_birth, :phone, :email, :gender, :username, :password)
+      params.require(:user).permit(:name, :surname, :JMBG, :date_of_birth, :place_of_birth, :phone, :email, :gender, :username, :password)
     end
 end

@@ -14,7 +14,7 @@
 #end
 
 #WickedPdf.config = {
-	
+
 
 #wkhtmltopdf: exe_path,
 #exe_path: exe_path
@@ -33,4 +33,5 @@ WickedPdf.config = {
     #:wkhtmltopdf => '/usr/local/bin/wkhtmltopdf',
     #:layout => "pdf.html",
     :exe_path => 'C:\wkhtmltopdf\bin\wkhtmltopdf.exe'
+
 }

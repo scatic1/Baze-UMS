@@ -6,8 +6,6 @@ class CreateSubjects < ActiveRecord::Migration[5.1]
       t.integer :cycle
       t.integer :semester
       t.string :subject_type
-
-      t.timestamps
     end
   end
 end

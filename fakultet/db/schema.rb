@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171224210922) do
+ActiveRecord::Schema.define(version: 20171228232320) do
 
   create_table "confirmations", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "svrha"
@@ -18,25 +18,6 @@ ActiveRecord::Schema.define(version: 20171224210922) do
     t.string "prezime"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "exam_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.boolean "apply"
-    t.bigint "exam_id"
-    t.bigint "student_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["exam_id"], name: "index_exam_applications_on_exam_id"
-    t.index ["student_id"], name: "index_exam_applications_on_student_id"
-  end
-
-  create_table "exams", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
-    t.datetime "exam_time"
-    t.string "exam_place"
-    t.bigint "subject_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["subject_id"], name: "index_exams_on_subject_id"
   end
 
   create_table "job_advertisements", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -62,7 +43,7 @@ ActiveRecord::Schema.define(version: 20171224210922) do
     t.index ["job_advertisements_id"], name: "index_job_applications_on_job_advertisements_id"
   end
 
-  create_table "students", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "results", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string "name"
     t.string "surname"
     t.integer "jmbg"
@@ -79,11 +60,11 @@ ActiveRecord::Schema.define(version: 20171224210922) do
     t.integer "year"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "subject_id"
-    t.bigint "subject_id_id"
     t.float "points", limit: 24
     t.integer "mark"
-    t.index ["subject_id_id"], name: "index_students_on_subject_id_id"
+    t.bigint "subject_id"
+    t.integer "proba"
+    t.index ["subject_id"], name: "index_results_on_subject_id"
   end
 
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
@@ -96,8 +77,6 @@ ActiveRecord::Schema.define(version: 20171224210922) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "exam_applications", "exams"
-  add_foreign_key "exam_applications", "students"
-  add_foreign_key "exams", "subjects"
   add_foreign_key "job_applications", "job_advertisements", column: "job_advertisements_id"
+  add_foreign_key "results", "subjects"
 end

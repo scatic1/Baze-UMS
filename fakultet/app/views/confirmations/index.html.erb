@@ -16,12 +16,13 @@
     <% @confirmations.to_a.each do |confirmation| %>
       <tr>
         <td><%= confirmation.svrha %></td>
-        <td><%= confirmation.ime %></td>
+        <td><%=confirmation.ime %></td>
         <td><%= confirmation.prezime %></td>
+        <td><%= current_user.id %></td>
         <td><%= link_to 'Show', confirmation %></td>
         <td><%= link_to 'Edit', edit_confirmation_path(confirmation) %></td>
         <td><%= link_to 'Destroy', confirmation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-        <td><%= link_to "download",  confirmation_download_resume_path(:confirmation_id) %></td>
+        <td><%= link_to "download", skini_path(:confirmation) %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,5 +31,3 @@
 <br>
 
 <%= link_to 'New Confirmation', new_confirmation_path %>
-
-

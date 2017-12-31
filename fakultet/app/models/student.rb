@@ -1,4 +1,4 @@
-class Student < ApplicationRecord
+class Student< ApplicationRecord
 
-
+establish_connection UMS2
 end

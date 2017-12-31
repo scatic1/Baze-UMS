@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Confirmations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Svrha</th>
+      <th>Ime</th>
+      <th>Prezime</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @nova = Confirmation.new %>
+   <% @nova= Confirmation.find_by_id(params[:id]) %>
+
+        <td> <%=confirmation.id %> </td>
+
+
+
+  </tbody>
+</table>

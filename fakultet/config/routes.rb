@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :exam_applications
   resources :exams
   resources :subjects
-  resources :students
+  resources :results
   resources :job_applications
      resources :job_advertisements
 match 'active'  => 'sessions#active',  via: :get
@@ -21,9 +21,11 @@ get 'sessions/new'
   post 'login', to: 'sessions#create'
 
 
- resources :confirmations do
-get :download_resume
-end
+  resources :confirmations do
+  get :download_resume
+  end
+get "skini" => "confirmations#download_resume", as: :skini
+get "nesto" => "confirmations#index", as: :nesto
 get 'download', to: 'confirmations#index'
 
   get "about" => "welcome#about", as: :about
@@ -36,8 +38,8 @@ get 'download', to: 'confirmations#index'
    get "new_advertisement"=>"job_advertisements#new", as: :new_advertisement
    get "editjobadvertisement{:id}",to: 'job_advertisements#edit' ,as: :editjobadvertisement
    get ":id", to: 'job_advertisements#show', as: :showjob
-   get "show_student{:id}" => "students#show", as: :show_student
-   get "show_subject{:id}" => "subjects#show", as: :show_subject
+   get "show_result{:id}" => "results#show", as: :show_result
+   #get "show_result{:id}" => "results#show", as: :show_result
    get "show_exam{:id}" => "exams#show", as: :show_exam
    get "/apply_exam_application/:id" => "exam_applications#new", as: :apply_exam_application
   get "/showexam/:id/" => "exam_applications#show", as: :showexam

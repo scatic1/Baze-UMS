@@ -1,0 +1,58 @@
+<!--<p id="notice"><%= notice %></p>-->
+
+<h1>Results</h1>
+
+<table class="table">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Jmbg</th>
+      <th scope="col">Birthday</th>
+      <th scope="col">Placebirth</th>
+      <th scope="col">Telephone</th>
+      <th scope="col">Email</th>
+      <th scope="col">Gender</th>
+      <!--<th scope="col">Username</th>
+      <th scope="col">Password</th>
+      <th scope="col">Category</th>-->
+      <th scope="col">Index</th>
+      <th scope="col">Ects</th>
+      <th scope="col">Year</th>
+      <th scope="col">Points</th>
+      <th scope="col">Mark</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @results.each do |result| %>
+      <tr>
+        <td><%= result.name %></td>
+        <td><%= result.surname %></td>
+        <td><%= result.jmbg %></td>
+        <td><%= result.birthday %></td>
+        <td><%= result.placebirth %></td>
+        <td><%= result.telephone %></td>
+        <td><%= result.email %></td>
+        <td><%= result.gender %></td>
+        <!--<td><%= result.username %></td>
+        <td><%= result.password %></td>
+        <td><%= result.category %></td>-->
+        <td><%= result.index %></td>
+        <td><%= result.ects %></td>
+        <td><%= result.year %></td>
+        <td><%= result.points %></td>
+        <td><%= result.mark %></td>
+
+        <td><%= link_to 'Show', result %></td>
+        <td><%= link_to 'Edit', edit_result_path(result) %></td>
+        <td><%= link_to 'Destroy', result, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'Import CSV', new_result_path %>

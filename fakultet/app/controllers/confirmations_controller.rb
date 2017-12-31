@@ -77,8 +77,10 @@ class ConfirmationsController < ApplicationController
 
     public
     def download_resume
-    pdf = WickedPdf.new.pdf_from_string(render_to_string('confirmations/index.html.erb', layout: false)
-    )
-    send_data pdf, :filename => "fajl.pdf", :type => "application/pdf", :disposition => "attachment"
+     @confirmations = Confirmation.all
+     @confirmation = Confirmation.find_by_id(params[:id])
+     @confirmation = Confirmation.new
+     pdf = WickedPdf.new.pdf_from_string(render_to_string('confirmations/index.html.erb', layout: false))
+     send_data pdf, :filename => "fajl.pdf", :type => "application/pdf", :disposition => "attachment"
     end
 end

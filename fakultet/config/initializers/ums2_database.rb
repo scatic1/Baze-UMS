@@ -1,0 +1,1 @@
+UMS2 = YAML.load_file(File.join(Rails.root, "config", "ums2_database.yml"))[Rails.env.to_s]

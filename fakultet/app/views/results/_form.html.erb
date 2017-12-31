@@ -1,0 +1,87 @@
+<%= form_with(model: result, local: true) do |form| %>
+  <% if result.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(result.errors.count, "error") %> prohibited this student from being saved:</h2>
+
+      <ul>
+      <% result.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name,class:"form-control col-sm-5", id: :result_name %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :surname %>
+    <%= form.text_field :surname, class:"form-control col-sm-5",id: :result_surname %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :jmbg %>
+    <%= form.number_field :jmbg,class:"form-control col-sm-5", id: :result_jmbg %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :birthday %>
+    <%= form.date_select :birthday,class:"form-control col-sm-5", id: :result_birthday %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :placebirth %>
+    <%= form.text_field :placebirth,class:"form-control col-sm-5", id: :result_placebirth %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :telephone %>
+    <%= form.number_field :telephone,class:"form-control col-sm-5", id: :result_telephone %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :email %>
+    <%= form.text_field :email,class:"form-control col-sm-5", id: :result_email %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :gender %>
+    <%= form.text_field :gender,class:"form-control col-sm-5", id: :result_gender %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :username %>
+    <%= form.text_field :username, class:"form-control col-sm-5",id: :result_username %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :password %>
+    <%= form.text_field :password,class:"form-control col-sm-5", id: :result_password %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :category %>
+    <%= form.text_field :category,class:"form-control col-sm-5", id: :result_category %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :index %>
+    <%= form.number_field :index,class:"form-control col-sm-5", id: :result_index %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :ects %>
+    <%= form.number_field :ects,class:"form-control col-sm-5", id: :result_ects %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :year %>
+    <%= form.number_field :year,class:"form-control col-sm-5", id: :result_year %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

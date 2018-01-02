@@ -14,17 +14,50 @@ class ExamApplicationsController < ApplicationController
   # GET /exam_applications/1
   # GET /exam_applications/1.json
   def show
-     @exams = Exam.all
-     @exam_applications = ExamApplication.all
+    @exams = Exam.all
+
+  @exam_applications = ExamApplication.all
 
   @exam_application = ExamApplication.new
-    @exam = Exam.new
+  @exam = Exam.new
+  t='false'
+  @postoji=ExamApplication.find_by_exam_id(params[:id])
+  user = current_user
+  if(@postoji!=nil)
+
+  t='true'
+  respond_to do |format|
+  format.html { redirect_to exam_applications_path, notice: 'Vec ste prijavljeni na ovaj ispit.' }
+  format.json { render :show, status: :created, location: @exam_application }
+
+  end
+end
+
+  if(t=='false')
+  @s=Student.find_by_user_id(user.id)
+  @u=ExamApplication.new
+  u=ExamApplication.create :apply=>'true', :exam_id=>params[:id], :student_id=>@s.id
+  respond_to do |format|
+  format.html { redirect_to exam_applications_path, notice: 'Uspjesno ste prijavljeni!.' }
+  format.json { render :show, status: :created, location: @exam_application }
+
+  end
+
+  end
+    if(t=='true')
+
+
+  end
 
 
   end
 
   # GET /exam_applications/new
   def new
+    @exam_applications = ExamApplication.all
+
+     @exam=Exam.find_by_id(params[:id])
+     @examtitle=Exam.find_by_id(params[:title])
     @exam_application = ExamApplication.new
     @exams = Exam.all
      @exam=Exam.find_by_id(params[:id])

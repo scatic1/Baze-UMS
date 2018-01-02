@@ -43,7 +43,7 @@ get 'download', to: 'confirmations#index'
    get "show_exam{:id}" => "exams#show", as: :show_exam
    get "/apply_exam_application/:id" => "exam_applications#new", as: :apply_exam_application
   get "/showexam/:id/" => "exam_applications#show", as: :showexam
-
+ 
 
 
 

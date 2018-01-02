@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p> <br></br>Na osnovu clana 169. Zakona o upravnom postupku FBiH (Sluzbene novine FBiH, broj 2/98, 48/99) izdaje se: </p>
+<h1><br></br><br></br><center>P O T V R D A</center></h1>
+
+<% @confirmations.to_a.each do |confirmation| %>
+    <% if confirmation.ime == current_user.name %>
+
+      <h3><br></br><br></br>Ime i prezime : <%= confirmation.ime %> <%= confirmation.prezime %></h3> 
+      <h3>Datum rodjenja : <%= current_user.date_of_birth %></h3> 
+      <h3>Mjesto rodjenja : <%= current_user.place_of_birth %></h3> 
+      
+      
+     
+      
+      <% if current_user.category == "student" %>
+
+        <% @students.to_a.each do |student| %>
+
+          <% if student.user_id == current_user.id %>
+
+            <h3>Broj indeksa : <%= student.index %></h3> 
+
+            <p><br></br>Potvrdjuje se da je <%= confirmation.ime %> <%= confirmation.prezime %> u akademskoj 2017/2018 godini upisan u <%= student.year %>. godinu na Elektrotehnicki fakultet u Sarajevu, sa ukupno <%= student.ects %> ECTS bodova.</p>
+          <% end %>
+        <% end %>
+      <% end %>
+      
+       <% if confirmation.svrha == "Za isplatu" %>
+      <p><br></br>Potvrdjuje se da je iznos plate od <%=current_user.salary%> KM, uspjesno isplacen.</p>
+<% end %>
+      <p><br></br>Ova potvrda se izdaje u svrhu <%= confirmation.svrha %> te se u druge svrhe ne moze koristiti.</p>
+      
+    <% end %>
+  <% end %>    

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171228231624) do
+ActiveRecord::Schema.define(version: 20180102170853) do
 
   create_table "exam_applications", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.boolean "apply"
@@ -55,6 +55,7 @@ ActiveRecord::Schema.define(version: 20171228231624) do
     t.string "username"
     t.string "password_digest"
     t.string "category"
+    t.float "salary", limit: 53
   end
 
   add_foreign_key "exam_applications", "exams"

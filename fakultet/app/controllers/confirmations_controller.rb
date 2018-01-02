@@ -80,7 +80,8 @@ class ConfirmationsController < ApplicationController
      @confirmations = Confirmation.all
      @confirmation = Confirmation.find_by_id(params[:id])
      @confirmation = Confirmation.new
-     pdf = WickedPdf.new.pdf_from_string(render_to_string('confirmations/index.html.erb', layout: false))
+     @students = Student.all
+     pdf = WickedPdf.new.pdf_from_string(render_to_string('confirmations/zapdf.html.erb', layout: false))
      send_data pdf, :filename => "fajl.pdf", :type => "application/pdf", :disposition => "attachment"
     end
 end
